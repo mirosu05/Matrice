@@ -1,0 +1,61 @@
+using System;
+
+namespace MatriceVezbaZaKontrolni
+{
+    class Program
+    {
+        static void kvadriraj(int[,] A, int n)
+        {
+            int[,] B = new int[n, n];
+            int i, j, k;
+
+            for (i = 0; i < n; i++)
+                for (j = 0; j < n; j++)
+                {
+                    B[i, j] = 0;
+                    
+                    for (k = 0; k < n; k++)
+                    {
+                        B[i, j] += A[i, k] * A[k, j];
+
+                    }
+
+                }
+
+            Console.WriteLine("Matrica B = A*A:");
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    Console.Write(" " + B[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+
+
+        static void Main(string[] args)
+        {
+            int[,] A = new int[20, 20];
+            int dim, i, j;
+
+            Console.WriteLine("Unesite dimenziju kvadratne matrice");
+            dim = int.Parse(Console.ReadLine());
+
+            for (i = 0; i < dim; i++)
+            {
+                for (j = 0; j < dim; j++)
+                {
+                    Console.Write("clan[", i, j, "] = ");
+
+                    A[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            kvadriraj(A, dim);
+
+        }
+    }
+}
