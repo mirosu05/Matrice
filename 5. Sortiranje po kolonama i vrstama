@@ -1,0 +1,105 @@
+using System;
+
+namespace MatriceVezbaZaKontrolni
+{
+    class Program
+    {
+        static void sortiranje_kolona(int[,] matrica, int n, int m)
+        {
+            int i, j;
+            int pom, t;
+
+            for (j = 0; j < m; j++)
+            {
+                for (i = 0; i < n; i++)
+                {
+                   t = i;
+                    while (t > 0 && matrica[t, j] < matrica[t - 1, j])
+                    {
+                        pom = matrica[t, j];
+
+                        matrica[t, j] = matrica[t - 1, j];
+
+                        matrica[t - 1, j] = pom;
+
+                        t--;
+                    }
+                }
+            }
+
+            Console.WriteLine("Matrica cije su kolone sortirane");
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < m; j++)
+                {
+                    Console.Write(matrica[i, j]);
+                }
+                Console.WriteLine('\n');
+            }
+        }
+
+
+
+       static void sortiranje_vrsta(int[,] matrica, int n, int m)
+       {
+            int i, j, t;
+            int pom;
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < m; j++)
+                {
+                    t = j;
+
+                    while (t > 0 && matrica[i, t] < matrica[i, t - 1])
+                    {
+                        pom = matrica[i, t];
+
+                        matrica[i, t] = matrica[i, t - 1];
+
+                        matrica[i, t - 1] = pom;
+
+                        t--;
+                    }                    
+                }
+            }
+            
+            Console.WriteLine("Matrica cije su vrste sortirane");
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < m; j++)
+                {
+                    Console.Write(matrica[i, j]);
+                }
+                Console.WriteLine('\n');
+            }
+       }
+
+        static void Main(string[] args)
+        {
+
+            int[,] A = new int[50, 50];
+            int i, j, m, n;
+
+            Console.WriteLine("Unesite broj vrsta matrice");
+            n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Unesite broj kolona matrice");
+            m = int.Parse(Console.ReadLine());
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < m; j++)
+                {
+                    Console.Write("clan[{0},{1}] = ", i, j);
+
+                    A[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            sortiranje_vrsta(A, n, m);
+
+            sortiranje_kolona(A, n, m);
+        }
+    }
+}
