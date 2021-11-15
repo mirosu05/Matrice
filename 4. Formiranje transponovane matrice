@@ -1,0 +1,57 @@
+using System;
+
+namespace MatriceVezbaZaKontrolni
+{
+    class Program
+    {  
+        static void transponuj(int[,] A, int n)
+        {
+            int i, j, pom;
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < i; j++)
+                {
+                    pom = A[i, j];
+                    A[i, j] = A[j, i];
+                    A[j, i] = pom;
+                }
+            }
+
+            Console.WriteLine("Transponovana matrica ");
+
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    Console.Write(" " + A[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            int[,] aMatrica = new int[15, 15];
+            int i, j, dim;
+
+            Console.WriteLine("Unesite dimenziju kvadratne matrice");
+            dim = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Unesi elemente matrice:");
+
+            for (i = 0; i < dim; i++)
+            {
+                for (j = 0; j < dim; j++)
+                {
+                    Console.Write("clan[", i, j, "] = ");
+                    aMatrica[i, j] = int.Parse(Console.ReadLine());
+
+                }
+
+            }
+
+            transponuj(aMatrica, dim);
+        }
+    }
+}
