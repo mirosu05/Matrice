@@ -1,0 +1,49 @@
+using System;
+
+
+namespace suma_elemenata_matrice
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+                        
+            int[,] a = new int[30, 40];
+
+            int i, j;
+
+            int m, n;
+
+            int s = 0;
+                             
+            Console.WriteLine("Unesite broj vrsta:");
+
+            m = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Unesite broj kolona:");
+
+            n = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Unesi clanove matrice:");
+            for (i = 0; i < m; i++)
+            {    
+                for (j = 0; j < n; j++)
+                {
+                    Console.Write("clan[", i, j, "] = ");
+                    a[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+       
+
+            for (i = 0; i < m; i++)
+            {
+                for (j = 0; j < n; j++)
+                {
+                    s = s + a[i, j];
+                }
+            }
+            Console.WriteLine("Suma elemenata matrice je:" + s);
+        }
+    }
+}
+
